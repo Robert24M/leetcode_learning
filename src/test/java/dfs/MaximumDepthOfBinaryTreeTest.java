@@ -1,6 +1,6 @@
 package dfs;
 
-import dfs.MaximumDepthOfBinaryTree.TreeNode;
+import datastructures.TreeNode;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

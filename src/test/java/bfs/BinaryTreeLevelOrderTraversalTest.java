@@ -1,6 +1,6 @@
 package bfs;
 
-import bfs.BinaryTreeLevelOrderTraversal.TreeNode;
+import datastructures.TreeNode;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
