@@ -1,7 +1,9 @@
 package backtracking;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 
 public class Permutations {
 
@@ -32,4 +34,31 @@ public class Permutations {
             currentPermutation.removeLast();
         }
     }
+
+    // todo: develop a non recursive solution
+
+    public List<List<Integer>> permuteNoRecursion(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        Queue<List<Integer>> permutations = new ArrayDeque<>();
+        permutations.add(new ArrayList<>());
+
+        for (int num : nums) {
+            int size = permutations.size();
+            while (size-- > 0) {
+                List<Integer> currentPermutation = permutations.poll();
+                for (int i = 0; i <= currentPermutation.size(); i++) {
+                    List<Integer> newPermutation = new ArrayList<>(currentPermutation);
+                    newPermutation.add(i,num);          // add method will push the existing element to the right, will not override it
+                    if (newPermutation.size() == nums.length) {
+                        result.add(newPermutation);
+                    } else {
+                        permutations.add(newPermutation);
+                    }
+                }
+            }
+        }
+
+        return result;
+    }
+
 }
