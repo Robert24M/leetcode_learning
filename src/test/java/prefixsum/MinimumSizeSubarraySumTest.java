@@ -33,4 +33,11 @@ class MinimumSizeSubarraySumTest {
         int target = 15;
         assertEquals(2, new MinimumSizeSubarraySum().minSubArraySum(target, nums));
     }
+
+    @Test
+    void test() {
+        int[] nums = {10,5,13,4,8,4,5,11,14,9,16,10,20,8};
+        int target = 80;
+        assertEquals(6, new MinimumSizeSubarraySum().minSubArraySum(target,nums));
+    }
 }
