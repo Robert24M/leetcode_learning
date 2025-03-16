@@ -4,17 +4,18 @@ package twopointers;
 public class TwoSumIIInputArrayIsSorted {
 
     public int[] twoSum(int[] numbers, int target) {
-
-        int left = 0, right = numbers.length - 1;       // start with a pointer from the start of the array and with another from the end
-        while (left != right) {                         // while the pointers do not intersect
-            if (numbers[left] + numbers[right] < target) {
+        int left = 0;
+        int right = numbers.length - 1;
+        while (left < right) {
+            int currentSum = numbers[left] + numbers[right];
+            if (currentSum < target) {
                 left++;
-            } else if (numbers[left] + numbers[right] > target) {
+            } else if (currentSum > target) {
                 right--;
             } else {
-                return new int[] { left + 1, right + 1 };
+                return new int[]{left + 1, right + 1};
             }
         }
-        return new int[]{-1,-1};
+        return null;
     }
 }
