@@ -1,38 +1,28 @@
 package stack;
 
-import java.util.PriorityQueue;
+import java.util.ArrayList;
 
 public class MinStack {
-    // toDo: keep in every entry of stack the value and the min at that point
-    private Integer[] stack;
-    private int pointer;
-    private PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+    private final ArrayList<int[]> stack;
+    private int min = Integer.MAX_VALUE;
     public MinStack() {
-        stack = new Integer[300000];
-        pointer = -1;
+        stack = new ArrayList<>();
     }
 
     public void push(int val) {
-        stack[++pointer] = val;
-        priorityQueue.add(val);
+        min = Math.min(val, min);
+        stack.add(new int[]{val, min});
     }
 
     public void pop() {
-        int lastElement = stack[pointer];
-        stack[pointer--] = null;
-        priorityQueue.remove(lastElement);
+        stack.removeLast();
+        min = stack.isEmpty() ? Integer.MAX_VALUE : stack.getLast()[1];
     }
-
     public int top() {
-        return stack[pointer];
+        return stack.getLast()[0];
     }
 
     public int getMin() {
-        Integer min = priorityQueue.peek();
-        if (min != null) {
-            return min;
-        }
-        return Integer.MIN_VALUE;
+        return stack.getLast()[1];
     }
-
 }
